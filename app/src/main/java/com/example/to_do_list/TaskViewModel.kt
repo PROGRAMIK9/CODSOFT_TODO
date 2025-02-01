@@ -17,17 +17,21 @@ class TaskViewModel(private val rep: TaskItemRep) : ViewModel(){
     fun add(newTaskItem: TaskItem) = viewModelScope.launch{
         rep.insertTask(newTaskItem)
     }
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun update(taskItems: TaskItem) = viewModelScope.launch{
         rep.updateTask(taskItems)
     }
-    @RequiresApi(Build.VERSION_CODES.O)
+
+    fun deleteTask(taskItems: TaskItem) = viewModelScope.launch {
+        rep.deleteTask(taskItems)
+    }
+
     fun setDate(taskItems: TaskItem)=viewModelScope.launch {
         if (!taskItems.iscompleted()) taskItems.completedDateString =
             TaskItem.dateFormatter.format(LocalDate.now())
         rep.updateTask(taskItems)
     }
-    @RequiresApi(Build.VERSION_CODES.O)
+
     fun remDate(taskItems: TaskItem)=viewModelScope.launch {
         if (taskItems.iscompleted()) taskItems.completedDateString = null
         rep.updateTask(taskItems)

@@ -5,47 +5,74 @@
     android:layout_margin="20dp"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:backgroundTint="?attr/colorPrimary">
+
         <ImageButton
+            android:id="@+id/complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/complete"
-            android:layout_marginHorizontal="5dp"
-            android:src="@drawable/round_adjust_24"
-            android:backgroundTint="@android:color/transparent"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/checkbox"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:contentDescription="@string/checkbox"/>
-        <TextView
-            android:id="@+id/CardTitle"
-            android:layout_width="wrap_content"
+            android:src="@drawable/round_adjust_24" />
+
+        <LinearLayout
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            style="@style/TextAppearance.AppCompat.Title" />
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CardTitle"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/placeholder" />
+
+            <TextView
+                android:id="@+id/CardDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="Desc" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            />
+            android:layout_weight="1"
+            android:text="Start" />
+
         <TextView
             android:id="@+id/Due"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Due"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-           />
-</LinearLayout>
+            android:layout_weight="1"
+            android:text="Due" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:backgroundTint="@color/design_default_color_primary"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="10dp"/>
 </androidx.cardview.widget.CardView>

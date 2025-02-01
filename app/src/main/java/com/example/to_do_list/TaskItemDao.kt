@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskItemDao {
-    @Query("SELECT * FROM task_item_table ORDER BY id ASC")
+    @Query("SELECT * FROM task_item_table ORDER BY startTime ASC")
     fun select():Flow<List<TaskItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

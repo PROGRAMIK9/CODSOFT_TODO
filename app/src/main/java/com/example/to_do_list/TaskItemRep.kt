@@ -17,4 +17,9 @@ class TaskItemRep(
     suspend fun updateTask(taskItem: TaskItem){
         taskItemDao.updateTask(taskItem)
     }
+
+    @WorkerThread
+    suspend fun  deleteTask(taskItem: TaskItem){
+        taskItemDao.deleteTask(taskItem)
+    }
 }

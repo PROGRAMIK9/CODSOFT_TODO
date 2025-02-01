@@ -33,10 +33,12 @@ class MainActivity : AppCompatActivity(),TaskListener
     private fun setTaskView() {
         val mainActivity = this
         taskViewModel.taskItem.observe(this){
+            val adapter = TaskItemAdapter(it,mainActivity)
             binding.TaskList.apply {
                 layoutManager = LinearLayoutManager(applicationContext)
-                adapter = TaskItemAdapter(it,mainActivity)
+                this.adapter = adapter
             }
+            adapter.startUpdating()
         }
     }
 
@@ -44,9 +46,13 @@ class MainActivity : AppCompatActivity(),TaskListener
         BlankFragment(taskItem).show(supportFragmentManager,"newTaskTag")
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun completeTask(taskItem: TaskItem) {
         if (taskItem.iscompleted()){taskViewModel.remDate(taskItem)}
         else{taskViewModel.setDate(taskItem)}
     }
+
+    override fun deleteTask(taskItem: TaskItem) {
+        taskViewModel.deleteTask(taskItem) // Call ViewModel function
+    }
+
 }

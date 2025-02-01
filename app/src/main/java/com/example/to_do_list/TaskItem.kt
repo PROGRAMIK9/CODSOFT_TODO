@@ -20,22 +20,16 @@ class TaskItem(
     @ColumnInfo("date") var completedDateString:String?,
     @PrimaryKey(autoGenerate = true) var id:Int = 0
 ) {
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun completedDate(): LocalDate? = if(completedDateString == null) null else LocalDate.parse(completedDateString,dateFormatter)
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun endTime(): LocalTime? = if(endTimeString == null) null else LocalTime.parse(endTimeString,timeFormatter)
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun startTime(): LocalTime? = if(startTimeString == null) null else LocalTime.parse(startTimeString,timeFormatter)
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun iscompleted() = completedDate()!=null
+    fun iscompleted() = endTime() == LocalTime.now() || completedDate()!=null
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun imageResource():Int = if(iscompleted()) R.drawable.baseline_check_circle_outline_24 else R.drawable.round_adjust_24
 
-    @RequiresApi(Build.VERSION_CODES.O)
     fun imageColor(context: Context):Int = if(iscompleted()) purple(context) else black(context)
 
     private fun purple(context:Context) =  ContextCompat.getColor(context,R.color.purple_500)
@@ -43,9 +37,7 @@ class TaskItem(
     private fun black(context:Context) = ContextCompat.getColor(context,R.color.black)
 
     companion object{
-        @RequiresApi(Build.VERSION_CODES.O)
         val timeFormatter:DateTimeFormatter = DateTimeFormatter.ISO_TIME
-        @RequiresApi(Build.VERSION_CODES.O)
         val dateFormatter:DateTimeFormatter = DateTimeFormatter.ISO_DATE
     }
 
