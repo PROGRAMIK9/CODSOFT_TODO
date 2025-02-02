@@ -15,6 +15,7 @@
         android:layout_marginHorizontal="10dp"
         android:backgroundTint="@color/design_default_color_background"/>
 
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/NewTask"
         style="@style/TextAppearance.AppCompat.Title"
@@ -31,4 +32,12 @@
         app:elevation="20dp"
         app:icon="@drawable/baseline_add_24"
         app:iconTint="@color/design_default_color_on_primary" />
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_centerInParent="true"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome! Create your First Task"/>
+
 </RelativeLayout>

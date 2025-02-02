@@ -3,6 +3,8 @@ package com.example.to_do_list
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
@@ -16,13 +18,13 @@ import com.example.to_do_list.databinding.TaskCreatorBinding
 
 class MainActivity : AppCompatActivity(),TaskListener
 {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: TaskCreatorBinding
     private val taskViewModel: TaskViewModel by viewModels{
         TaskItemModelFactory((application as TodoApp).rep)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = TaskCreatorBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.NewTask.setOnClickListener{
             BlankFragment(null).show(supportFragmentManager,"newTask")
@@ -39,6 +41,12 @@ class MainActivity : AppCompatActivity(),TaskListener
                 this.adapter = adapter
             }
             adapter.startUpdating()
+            if(adapter.itemCount==0){
+                binding.Welcome.visibility = VISIBLE
+            }
+            else{
+                binding.Welcome.visibility = INVISIBLE
+            }
         }
     }
 

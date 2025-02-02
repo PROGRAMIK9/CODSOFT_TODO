@@ -42,8 +42,6 @@ class TaskViewHolder(
             binding.start.text = ""
         }
         val currentTime = SimpleDateFormat("HH:mm:00", Locale.getDefault()).format(Date())
-        Log.i("Aarya",currentTime)
-        Log.i("Aarya","${taskItem.startTimeString}")
         if (taskItem.startTimeString == currentTime) {
             binding.Cell.setBackgroundColor(Color.GRAY) // Highlight
         }
